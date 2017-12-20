@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package me.endureblackout.hsm.utils;
 
@@ -8,7 +8,6 @@ import org.bukkit.inventory.ItemStack;
 
 /**
  * @author Rayzr
- *
  */
 public class Items {
 

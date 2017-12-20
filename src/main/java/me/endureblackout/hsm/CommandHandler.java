@@ -15,10 +15,10 @@ import me.endureblackout.hsm.utils.Msg;
 
 public class CommandHandler implements CommandExecutor {
 
-    private HSM             core;
+    private HSM core;
 
-    public static String    missileName = "";
-    public static ItemStack missile     = new ItemStack(Material.FIREWORK);
+    public static String missileName = "";
+    public static ItemStack missile = new ItemStack(Material.FIREWORK);
     private static ItemMeta missileMeta = missile.getItemMeta();
 
     public CommandHandler(HSM instance) {

@@ -25,7 +25,7 @@ import me.endureblackout.hsm.utils.ParticleEffect;
 
 public class MissileHandler implements Listener {
 
-    HSM        core;
+    HSM core;
 
     List<UUID> reload = new ArrayList<UUID>();
 

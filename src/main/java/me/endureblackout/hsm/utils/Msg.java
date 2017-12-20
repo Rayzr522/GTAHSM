@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package me.endureblackout.hsm.utils;
 
@@ -9,7 +9,6 @@ import me.endureblackout.hsm.HSM;
 
 /**
  * @author Rayzr
- *
  */
 public class Msg {
 
@@ -30,7 +29,7 @@ public class Msg {
 
     /**
      * Returns a message with the given key
-     * 
+     *
      * @param key
      * @return
      */
@@ -51,7 +50,7 @@ public class Msg {
      * <br>
      * To be honest I should've put this in a class with a more relevant name,
      * but I didn't want to do that for just <i>one</i> method.
-     * 
+     *
      * @param text the text to color
      * @return The text, formatted using '&' color codes
      */
