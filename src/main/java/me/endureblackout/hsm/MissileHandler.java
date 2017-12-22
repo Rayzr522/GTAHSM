@@ -14,6 +14,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -25,9 +26,8 @@ import me.endureblackout.hsm.utils.ParticleEffect;
 
 public class MissileHandler implements Listener {
 
-    HSM core;
-
-    List<UUID> reload = new ArrayList<UUID>();
+    private HSM core;
+    private List<UUID> reload = new ArrayList<UUID>();
 
     public MissileHandler(HSM instance) {
         this.core = instance;
@@ -35,10 +35,9 @@ public class MissileHandler implements Listener {
 
     @EventHandler
     public void onRightClick(PlayerInteractEvent e) {
-
         final Player p = e.getPlayer();
 
-        if (!e.getAction().toString().startsWith("RIGHT_CLICK")) {
+        if (e.getAction() != Action.RIGHT_CLICK_BLOCK && e.getAction() != Action.RIGHT_CLICK_AIR) {
             // They aren't right clicking
             return;
         }

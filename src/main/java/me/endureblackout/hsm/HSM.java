@@ -3,6 +3,7 @@ package me.endureblackout.hsm;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -33,7 +34,9 @@ public class HSM extends JavaPlugin {
         // }
 
         // This should work better... sorry for messing with everything :3
-        load();
+        if (!load()) {
+            return;
+        }
 
         Bukkit.getServer().getPluginManager().registerEvents(new MissileHandler(this), this);
         getCommand("hsm").setExecutor(new CommandHandler(this));
@@ -46,19 +49,24 @@ public class HSM extends JavaPlugin {
         Msg.unload();
     }
 
-    public void load() {
+    public boolean load() {
         reloadConfig();
         try {
             setupConfig();
         } catch (IOException e) {
             // Well, that's problematic. Time to leave.
-            System.err.println("Failed to set up config file! Exiting...");
+            getLogger().log(Level.SEVERE, "Failed to set up config file! Exiting...", e);
             Bukkit.getPluginManager().disablePlugin(this);
-            return;
+            return false;
         }
+        return true;
     }
 
     private void setupConfig() throws IOException {
+        if (!getDataFolder().exists()) {
+            getDataFolder().mkdirs();
+        }
+        
         if (!new File(getDataFolder(), "RESET.FILE").exists()) {
             new File(getDataFolder(), "RESET.FILE").createNewFile();
 
